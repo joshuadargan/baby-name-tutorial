@@ -1,12 +1,18 @@
 import React from 'react'
 
-export default ({data, favorites}) => {
+export default ({data, favorites, removeFavorite}) => {
 
     const namesList = favorites.map(id => {
         const {name, sex} = data[id]
         console.log(name)
         return (
-            <li key={id} className={sex}>{name}</li>
+            <li 
+                key={id} 
+                className={sex}
+                onClick={() => removeFavorite(id)}
+                >
+                {name}
+                </li>
         )
     })
 

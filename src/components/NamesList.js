@@ -3,12 +3,12 @@ import React, {Component} from 'react';
 class NamesList extends Component {
     render() {
     
-        const { data, filterText, addFavorite } = this.props;
+        const { data, filterText, addFavorite, favorites } = this.props;
 
         const namesList = data
-           .filter(name => {
-               //Remove names not containing the filterText string
-                return name.name.toLowerCase().indexOf(filterText.toLowerCase()) >= 0
+           .filter((name,id) => {
+               //Remove names not containing the filterText string and names in favorites
+                return name.name.toLowerCase().indexOf(filterText.toLowerCase()) >= 0 && favorites.indexOf(id) === -1
            })
            .map(name => {
                 return (
